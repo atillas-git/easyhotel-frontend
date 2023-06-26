@@ -4,7 +4,7 @@
     "paths": {
       "@/public/*": ["./public/*"],
       "@/*": ["./src/*"],
-      "@/features/*":["./src/features/*"]
+      "@/features/*": ["./src/features/*"]
     }
   },
   "include": ["src"],
