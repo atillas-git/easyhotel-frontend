@@ -1,0 +1,6 @@
+# Ignore artifacts:
+build
+coverage
+.eslintrc.cjs
+node_modules
+vite.config.js
