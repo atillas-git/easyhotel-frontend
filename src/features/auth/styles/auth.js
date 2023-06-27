@@ -21,12 +21,12 @@ export const auth = {
   }),
   authForm: (theme) => ({
     padding: {
-      sm:"0",
-      md:"1rem"
+      sm: "0",
+      md: "1rem",
     },
     width: {
-      sm:"100%",
-      md:"50%"
+      sm: "100%",
+      md: "50%",
     },
     display: "flex",
     flexDirection: "column",
