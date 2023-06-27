@@ -4,7 +4,7 @@ import { Route, Routes } from "react-router-dom";
 import { privateRoutes } from "./PrivateRoutes";
 import { publicRoutes } from "./PublicRoutes";
 import Loading from "./components/Loading";
-import HLayout from "@/components/HLayout";
+import HLayout from "@/components/HLayout/HLayout";
 
 const AppRouter = () => {
   const { user } = useAppStore();

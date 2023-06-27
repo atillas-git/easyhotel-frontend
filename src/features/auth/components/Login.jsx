@@ -1,6 +1,6 @@
-import HButton from "@/components/HButton";
-import HCheckBox from "@/components/HCheckBox";
-import HInput from "@/components/HInput";
+import HButton from "@/components/HButton/HButton";
+import HCheckBox from "@/components/HCheckBox/HCheckBox";
+import HInput from "@/components/HInput/HInput";
 import FormGroup from "@mui/material/FormGroup";
 import Typography from "@mui/material/Typography";
 import { useState } from "react";

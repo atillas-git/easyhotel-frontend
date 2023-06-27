@@ -59,7 +59,7 @@ const styles = {
   toolbar: () => ({
     color: "white",
     width: "100%",
-    ml: 7,
+    ml: 10,
   }),
   iconButton: (open) => ({
     mr: 2,

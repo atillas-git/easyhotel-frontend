@@ -20,8 +20,14 @@ export const auth = {
     color: "white",
   }),
   authForm: (theme) => ({
-    padding: "1rem",
-    width: "50%",
+    padding: {
+      sm:"0",
+      md:"1rem"
+    },
+    width: {
+      sm:"100%",
+      md:"50%"
+    },
     display: "flex",
     flexDirection: "column",
     borderRadius: "1rem",

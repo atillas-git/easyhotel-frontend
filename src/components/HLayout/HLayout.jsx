@@ -2,12 +2,12 @@
 import { useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import { useState } from "react";
-import HNavbar from "./HNavbar";
-import HSidebar from "./HSidebar";
+import HNavbar from "../HNavbar/HNavbar";
+import HSidebar from "../HSidebar/HSidebar";
 
 const HLayout = () => {
   const theme = useTheme();
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
   const handleDrawerOpen = () => {
     setOpen(true);
   };
