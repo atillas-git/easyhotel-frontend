@@ -8,7 +8,7 @@ import HLayout from "@/components/HLayout";
 
 const AppRouter = () => {
   const { user } = useAppStore();
-  
+
   const routes = useMemo(() => {
     if (user) {
       return privateRoutes;
@@ -16,10 +16,10 @@ const AppRouter = () => {
     return publicRoutes;
   }, [user]);
 
-  if(user){
+  if (user) {
     return (
       <>
-        <HLayout/>      
+        <HLayout />
         {/* <Suspense fallback={<Loading />}>
           <Routes>
             {routes.map((route) => {
@@ -31,14 +31,17 @@ const AppRouter = () => {
         </Suspense> */}
       </>
     );
-  }
-  else{
+  } else {
     return (
       <Suspense fallback={<Loading />}>
         <Routes>
           {routes.map((route) => {
             return (
-              <Route key={route.key} path={route.path} element={route.element} />
+              <Route
+                key={route.key}
+                path={route.path}
+                element={route.element}
+              />
             );
           })}
         </Routes>
