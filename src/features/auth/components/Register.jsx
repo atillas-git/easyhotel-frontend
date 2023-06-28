@@ -8,7 +8,7 @@ import { toast } from "react-toastify";
 import { auth } from "../styles/auth";
 import PropTypes from "prop-types";
 import countries from "@/config/counties";
-import HSelect from "@/components/HSelect";
+import HSelect from "@/components/HSelect/HSelect";
 import { register } from "../api/auth";
 
 const Register = ({ setShowRegister }) => {

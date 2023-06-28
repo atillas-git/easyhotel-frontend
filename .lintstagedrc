@@ -1,4 +1,3 @@
 {
-  "*.js": "npx prettier --write",
-  "*.jsx": "npx prettier --write"
+  "*": "npx prettier --write"
 }

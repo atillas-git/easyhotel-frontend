@@ -18,6 +18,7 @@ import AccordionSummary from "@mui/material/AccordionSummary";
 import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { useState } from "react";
+import styles from "./styles/style";
 
 const HSidebar = ({ open, handleDrawerClose }) => {
   const theme = useTheme();
@@ -47,7 +48,10 @@ const HSidebar = ({ open, handleDrawerClose }) => {
         {sidebar.map((sidebarItem, index) => {
           if (sidebarItem.type === "dropdown") {
             return (
-              <ListItem key={sidebarItem.key} sx={styles.listItem(theme)}>
+              <ListItem
+                key={sidebarItem.key}
+                sx={styles.accordionListItem(theme)}
+              >
                 <ListItemButton sx={styles.listItemButton()}>
                   <Accordion
                     expanded={expanded === `panel${index + 1}`}
@@ -58,25 +62,29 @@ const HSidebar = ({ open, handleDrawerClose }) => {
                       expandIcon={<ExpandMoreIcon />}
                       aria-controls={`panel${index + 1}bh-content`}
                       id={`panel${index + 1}bh-header`}
-                      sx={{
-                        m: 0,
-                        p: 0,
-                        "&:hover": { color: theme.palette.primary.dark },
-                      }}
+                      sx={styles.accordionSummary()}
                     >
-                      <ListItemIcon
-                        sx={{ display: "flex", alignItems: "center" }}
-                      >
+                      <ListItemIcon sx={styles.accordionIcon()}>
                         {sidebarItem.icon}
                       </ListItemIcon>
                       <Typography>{sidebarItem.label}</Typography>
                     </AccordionSummary>
-                    <AccordionDetails>
-                      <Typography>
-                        Nulla facilisi. Phasellus sollicitudin nulla et quam
-                        mattis feugiat. Aliquam eget maximus est, id dignissim
-                        quam.
-                      </Typography>
+                    <AccordionDetails sx={{ ml: 2, p: 0 }}>
+                      <List>
+                        {sidebarItem.subItems.map((subItem) => {
+                          return (
+                            <ListItem
+                              key={subItem.key}
+                              sx={styles.listItem(theme)}
+                            >
+                              <ListItemButton sx={styles.listItemButton()}>
+                                <ListItemIcon>{subItem.icon}</ListItemIcon>
+                                <ListItemText>{subItem.label}</ListItemText>
+                              </ListItemButton>
+                            </ListItem>
+                          );
+                        })}
+                      </List>
                     </AccordionDetails>
                   </Accordion>
                 </ListItemButton>
@@ -96,68 +104,6 @@ const HSidebar = ({ open, handleDrawerClose }) => {
       </List>
     </Drawer>
   );
-};
-const styles = {
-  drawer: (theme) => ({
-    width: {
-      xs: "100%",
-      md: 250,
-    },
-    flexShrink: 0,
-    "& .MuiDrawer-paper": {
-      width: {
-        xs: "100%",
-        md: 250,
-      },
-      color: theme.palette.primary.light,
-      boxSizing: "border-box",
-      backgroundColor: theme.palette.primary.dark,
-    },
-  }),
-  listItem: (theme) => ({
-    transitionTimingFunction: "linear",
-    transitionDuration: "0.1s",
-    padding: "5px",
-    "&:hover": {
-      backgroundColor: theme.palette.primary.light,
-      borderLeft: "5px solid",
-      borderColor: theme.palette.primary.main,
-      color: theme.palette.primary.dark,
-      svg: {
-        color: theme.palette.primary.dark,
-      },
-    },
-    svg: {
-      color: theme.palette.primary.light,
-    },
-  }),
-  listItemButton: () => ({
-    "&:hover": {
-      backgroundColor: "unset",
-    },
-  }),
-  drawerHeader: () => ({
-    height: 65,
-  }),
-  headerIcon: (theme) => ({
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    height: "100%",
-    "& svg": {
-      color: theme.palette.primary.light,
-    },
-  }),
-  closeIcon: () => ({
-    height: "12rem",
-  }),
-  accordion: (theme) => ({
-    backgroundColor: "unset",
-    color: theme.palette.primary.light,
-    boxShadow: "unset",
-    margin: 0,
-    padding: 0,
-  }),
 };
 
 HSidebar.propTypes = {

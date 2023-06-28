@@ -1,12 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
-import "./index.css";
 import { ThemeProvider, createTheme } from "@mui/material";
-import "react-toastify/dist/ReactToastify.css";
 import AppStore from "./store/AppStore.jsx";
 import { BrowserRouter } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import "./index.css";
 const theme = createTheme({
   palette: {
     primary: {
