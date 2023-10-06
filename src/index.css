@@ -1,6 +1,30 @@
+@font-face {
+  font-family: Inter;
+  src: url('./assets/fonts/Inter-Regular.ttf');
+}
+::-webkit-scrollbar {
+  width: 7px;
+  height: 10px;
+}
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #686868; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+
 * {
   margin: 0;
   padding: 0;
+  font-family: Inter;
 }
 div[id="root"] {
   display: flex;
@@ -8,6 +32,12 @@ div[id="root"] {
   min-height: 100vh;
   width: 100%;
 }
+
+a{
+  text-decoration: none;
+  color: inherit;
+}
+
 footer {
   margin-top: auto;
 }

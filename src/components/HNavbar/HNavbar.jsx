@@ -11,16 +11,21 @@ import { useState } from "react";
 import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
-import { useAppStore } from "@/hooks/useAppStore";
 import { ExpandMore } from "@mui/icons-material";
 import SettingsSuggestIcon from "@mui/icons-material/SettingsSuggest";
+import useStore from "@/hooks/useStore";
+import { useNavigate } from "react-router-dom";
 
-const HNavbar = ({ open, handleDrawerOpen, appBarStyles, toolBarStyles }) => {
+const HNavbar = ({ open, handleDrawerOpen, appBarStyles, toolBarStyles ,children}) => {
   const theme = useTheme();
   const [anchorEl, setAnchorEl] = useState(null);
   const [themeAnchorEl, setThemeAnchorEl] = useState(null);
 
-  const { user } = useAppStore();
+  const user = useStore((state)=>state.user)
+  const setTheme = useStore((state)=>state.setTheme)
+
+  const logoutClient = useStore((state)=>state.logoutClient)
+  const navigate = useNavigate()
 
   const openAvatar = Boolean(anchorEl);
 
@@ -38,9 +43,15 @@ const HNavbar = ({ open, handleDrawerOpen, appBarStyles, toolBarStyles }) => {
     setThemeAnchorEl(event.currentTarget);
   };
 
-  const handleThemeClose = () => {
+  const handleThemeClose = (theme) => ()=>{
+    setTheme(theme)
     setThemeAnchorEl(null);
   };
+
+  const handleLogout = ()=>{
+    logoutClient()
+    navigate("/")
+  }
 
   return (
     <AppBar
@@ -49,7 +60,7 @@ const HNavbar = ({ open, handleDrawerOpen, appBarStyles, toolBarStyles }) => {
       sx={appBarStyles ? appBarStyles : styles.appbar(theme, open)}
     >
       <Toolbar sx={toolBarStyles ? toolBarStyles : { width: "100%" }}>
-        <Box sx={styles.toolbar()}>
+        <Box sx={styles.toolbar(theme)}>
           <Box sx={{ display: "flex", alignItems: "center" }}>
             <IconButton
               color="inherit"
@@ -60,7 +71,7 @@ const HNavbar = ({ open, handleDrawerOpen, appBarStyles, toolBarStyles }) => {
             >
               <MenuIcon />
             </IconButton>
-            <Typography variant="h6" noWrap component="div">
+            <Typography variant="h6" noWrap component="div" sx={{fontWeight:"bold"}}>
               EasyHotel
             </Typography>
           </Box>
@@ -87,12 +98,12 @@ const HNavbar = ({ open, handleDrawerOpen, appBarStyles, toolBarStyles }) => {
                   "aria-labelledby": "theme",
                 }}
               >
-                <MenuItem onClick={handleThemeClose}>Teal - Default</MenuItem>
-                <MenuItem onClick={handleThemeClose}>Holy</MenuItem>
-                <MenuItem onClick={handleThemeClose}>Aqua Marine</MenuItem>
-                <MenuItem onClick={handleThemeClose}>CyberPunk</MenuItem>
-                <MenuItem onClick={handleThemeClose}>Elegant</MenuItem>
-                <MenuItem onClick={handleThemeClose}>Garnet</MenuItem>
+                <MenuItem onClick={handleThemeClose("default")}>Teal - Default</MenuItem>
+                <MenuItem onClick={handleThemeClose("holy")}>Holy</MenuItem>
+                <MenuItem onClick={handleThemeClose("fancyBlue")}>Fancy Blue</MenuItem>
+                <MenuItem onClick={handleThemeClose("earth")}>Earth</MenuItem>
+                <MenuItem onClick={handleThemeClose("elegant")}>Elegant</MenuItem>
+                <MenuItem onClick={handleThemeClose("garnet")}>Garnet</MenuItem>
               </Menu>
             </Box>
             <Box>
@@ -126,15 +137,21 @@ const HNavbar = ({ open, handleDrawerOpen, appBarStyles, toolBarStyles }) => {
                 MenuListProps={{
                   "aria-labelledby": "avatar",
                 }}
+                sx={{"& MuiPaper-root":{
+                  boxShadow:"none"
+                }}}
               >
                 <MenuItem onClick={handleClose}>Profile</MenuItem>
                 <MenuItem onClick={handleClose}>My account</MenuItem>
-                <MenuItem onClick={handleClose}>Logout</MenuItem>
+                <MenuItem onClick={handleLogout}>Logout</MenuItem>
               </Menu>
             </Box>
           </Box>
         </Box>
       </Toolbar>
+      <Box sx={{flexGrow:1}}>
+        {children}
+      </Box>
     </AppBar>
   );
 };
@@ -144,5 +161,6 @@ HNavbar.propTypes = {
   handleDrawerOpen: PropTypes.func,
   appBarStyles: PropTypes.object,
   toolBarStyles: PropTypes.object,
+  children:PropTypes.node
 };
 export default HNavbar;

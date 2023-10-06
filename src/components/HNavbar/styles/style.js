@@ -23,7 +23,7 @@ const styles = {
     display: "flex",
     alignItems: "center",
   }),
-  toolbar: () => ({
+  toolbar: (theme) => ({
     color: "white",
     width: "100%",
     display: "flex",

@@ -11,12 +11,14 @@ import PolicyIcon from "@mui/icons-material/Policy";
 import TroubleshootIcon from "@mui/icons-material/Troubleshoot";
 import CheckBoxIcon from "@mui/icons-material/CheckBox";
 import NightShelterIcon from "@mui/icons-material/NightShelter";
+import ArrowOutwardIcon from '@mui/icons-material/ArrowOutward';
+
 const sidebar = [
   {
     key: "sidebar-dashBoard",
     label: "Dashboard",
     icon: <DashboardIcon />,
-    route: "/dashboard",
+    route: "/",
     type: "item",
   },
   {
@@ -40,10 +42,17 @@ const sidebar = [
         type: "item",
       },
       {
-        key: "sidebar-checlIn",
+        key: "sidebar-checkIn",
         label: "CheckIN",
         icon: <CheckBoxIcon />,
         route: "/checkIn",
+        type: "item",
+      },
+      {
+        key: "sidebar-checkOut",
+        label: "CheckOut",
+        icon: <ArrowOutwardIcon/>,
+        route: "/checkout",
         type: "item",
       },
       {
@@ -64,6 +73,7 @@ const sidebar = [
   {
     key: "sidebar-crm",
     label: "CRM",
+    route: "/crm",
     icon: <SupportAgentIcon />,
   },
   {
@@ -84,7 +94,7 @@ const sidebar = [
     key: "sidebar-hrManagement",
     label: "HR Management",
     icon: <FaxIcon />,
-    route: "/hrManagement",
+    route: "/hr",
     type: "item",
   },
   {

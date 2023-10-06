@@ -29,7 +29,6 @@ const HInput = ({
   );
 };
 const style = () => ({
-  marginTop: "0.8rem",
   width: "100%",
 });
 

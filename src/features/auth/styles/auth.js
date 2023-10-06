@@ -12,12 +12,17 @@ export const auth = {
     width: "100%",
     padding: "1rem",
     height: "100%",
+    gap:2,
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: theme.palette.primary.main,
+    textAlign:"center",
+    backgroundColor: theme.palette.primary.contrastText,
     color: "white",
+    "& svg":{
+      fontSize:"15rem"
+    }
   }),
   authForm: (theme) => ({
     padding: {
@@ -30,6 +35,7 @@ export const auth = {
     },
     display: "flex",
     flexDirection: "column",
+    gap:1.2,
     borderRadius: "1rem",
     textAlign: "center",
   }),
@@ -41,13 +47,13 @@ export const auth = {
     justifyContent: "center",
     width: "100%",
     height: "100%",
+    color:theme.palette.primary.dark
   }),
   authInput: (theme) => ({
     marginTop: "0.8rem",
     width: "100%",
   }),
   authButton: (theme) => ({
-    marginTop: "0.8rem",
     color: "white",
   }),
   typographyHeading: (theme) => ({
@@ -55,11 +61,10 @@ export const auth = {
   }),
   headingDrawer: (theme) => ({
     borderColor: "white",
-    borderWidth: 1,
+    borderWidth: "0.1rem",
     width: "70%",
   }),
   headingCaption: (theme) => ({
     textAlign: "center",
-    marginTop: 10,
   }),
 };

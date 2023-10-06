@@ -19,10 +19,11 @@ import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { useState } from "react";
 import styles from "./styles/style";
+import { Link } from "react-router-dom";
 
 const HSidebar = ({ open, handleDrawerClose }) => {
   const theme = useTheme();
-  const [expanded, setExpanded] = useState(false);
+  const [expanded, setExpanded] = useState(true);
   const handleChange = (panel) => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : false);
   };
@@ -73,15 +74,16 @@ const HSidebar = ({ open, handleDrawerClose }) => {
                       <List>
                         {sidebarItem.subItems.map((subItem) => {
                           return (
-                            <ListItem
-                              key={subItem.key}
-                              sx={styles.listItem(theme)}
-                            >
-                              <ListItemButton sx={styles.listItemButton()}>
-                                <ListItemIcon>{subItem.icon}</ListItemIcon>
-                                <ListItemText>{subItem.label}</ListItemText>
-                              </ListItemButton>
-                            </ListItem>
+                            <Link key={subItem.key} to={subItem.route}>                           
+                              <ListItem
+                                sx={styles.listItem(theme)}
+                              >
+                                <ListItemButton sx={styles.listItemButton()}>
+                                  <ListItemIcon>{subItem.icon}</ListItemIcon>
+                                  <ListItemText>{subItem.label}</ListItemText>
+                                </ListItemButton>
+                              </ListItem>
+                            </Link>
                           );
                         })}
                       </List>
@@ -92,16 +94,26 @@ const HSidebar = ({ open, handleDrawerClose }) => {
             );
           } else {
             return (
-              <ListItem key={sidebarItem.key} sx={styles.listItem(theme)}>
-                <ListItemButton sx={styles.listItemButton()}>
-                  <ListItemIcon>{sidebarItem.icon}</ListItemIcon>
-                  <ListItemText>{sidebarItem.label}</ListItemText>
-                </ListItemButton>
-              </ListItem>
+              <Link key={sidebarItem.key} to={sidebarItem.route}>              
+                <ListItem sx={styles.listItem(theme)}>
+                  <ListItemButton sx={styles.listItemButton()}>
+                    <ListItemIcon>{sidebarItem.icon}</ListItemIcon>
+                    <ListItemText>{sidebarItem.label}</ListItemText>
+                  </ListItemButton>
+                </ListItem>
+              </Link>
             );
           }
         })}
       </List>
+      <Box sx={{marginTop:"auto", mb:1, textAlign:"center",display:"flex",flexDirection:"column",gap:1,p:2}}>
+        <Typography variant="caption">
+          Version: 0.0.1
+        </Typography>
+        <Typography variant="caption">
+          2023 Deltasoft Inc. All Rights Reserved
+        </Typography>
+      </Box>
     </Drawer>
   );
 };

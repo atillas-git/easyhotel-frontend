@@ -5,17 +5,18 @@ import FormGroup from "@mui/material/FormGroup";
 import Typography from "@mui/material/Typography";
 import { useState } from "react";
 import { toast } from "react-toastify";
-import { useAppStore } from "@/hooks/useAppStore";
 import { auth } from "../styles/auth";
 import PropTypes from "prop-types";
 import { login } from "../api/auth";
+import useStore from "@/hooks/useStore";
 
 const Login = ({ setShowRegister }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
-  const { dispatch } = useAppStore();
+
+  const loginClient = useStore((state)=>state.loginClient)
 
   const onLogin = async () => {
     if (!email || !password) {
@@ -24,7 +25,7 @@ const Login = ({ setShowRegister }) => {
     try {
       setLoading(true);
       const res = await login({ email: email, password: password });
-      dispatch({ type: "LOGIN", user: res.data });
+      loginClient(res.data)
     } catch (error) {
       toast.error(error.response ? error.response.data : error);
     } finally {
@@ -38,28 +39,35 @@ const Login = ({ setShowRegister }) => {
 
   return (
     <FormGroup sx={auth.authForm}>
-      <Typography variant="h5">Login</Typography>
+      <Typography variant="h5" fontWeight={"bold"} boxShadow={"none"} marginBottom={2}>Please Login</Typography>
       <HInput
         required={true}
         label="Email"
-        variant="outlined"
+        variant="filled"
         type="email"
         onChange={(e) => setEmail(e.target.value)}
       />
       <HInput
         required={true}
         label={"Password"}
+        variant="filled"
         type={showPassword ? "text" : "password"}
         onChange={(e) => setPassword(e.target.value)}
       />
       <HCheckBox label="Show Password" onChange={checkShowPassword} />
-      <HButton disabled={loading} variant="contained" onClick={onLogin}>
+      <HButton 
+        disabled={loading} 
+        variant="contained" 
+        onClick={onLogin}
+        loading={loading}
+        sx={{boxShadow:"none"}}
+      >
         Login
       </HButton>
       <HButton
-        disabled={loading}
         color="contrastText"
         variant="contained"
+        sx={{boxShadow:"none"}}
         onClick={() => setShowRegister(true)}
       >
         SignUp
@@ -68,6 +76,6 @@ const Login = ({ setShowRegister }) => {
   );
 };
 Login.propTypes = {
-  setShowRegister: PropTypes.func,
+  setShowRegister: PropTypes.func.isRequired,
 };
 export default Login;
