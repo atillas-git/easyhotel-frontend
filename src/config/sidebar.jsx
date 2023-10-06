@@ -11,7 +11,7 @@ import PolicyIcon from "@mui/icons-material/Policy";
 import TroubleshootIcon from "@mui/icons-material/Troubleshoot";
 import CheckBoxIcon from "@mui/icons-material/CheckBox";
 import NightShelterIcon from "@mui/icons-material/NightShelter";
-import ArrowOutwardIcon from '@mui/icons-material/ArrowOutward';
+import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward";
 
 const sidebar = [
   {
@@ -51,7 +51,7 @@ const sidebar = [
       {
         key: "sidebar-checkOut",
         label: "CheckOut",
-        icon: <ArrowOutwardIcon/>,
+        icon: <ArrowOutwardIcon />,
         route: "/checkout",
         type: "item",
       },

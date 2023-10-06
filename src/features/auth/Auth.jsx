@@ -6,7 +6,7 @@ import { auth } from "./styles/auth";
 import { useState } from "react";
 import Login from "./components/Login";
 import Register from "./components/Register";
-import {FaConnectdevelop} from 'react-icons/fa';
+import { FaConnectdevelop } from "react-icons/fa";
 const Auth = () => {
   const theme = useTheme();
   const [showRegister, setShowRegister] = useState(false);
@@ -15,7 +15,7 @@ const Auth = () => {
       <Grid sx={auth.authRow} container spacing={0}>
         <Grid item md={4} sx={{ display: { xs: "none", md: "inherit" } }}>
           <Box sx={auth.authBackground(theme)}>
-            <FaConnectdevelop/>
+            <FaConnectdevelop />
             <Typography variant="h4" mt={3} fontWeight={"bold"}>
               EasyHotel
             </Typography>

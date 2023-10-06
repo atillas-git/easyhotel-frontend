@@ -16,16 +16,22 @@ import SettingsSuggestIcon from "@mui/icons-material/SettingsSuggest";
 import useStore from "@/hooks/useStore";
 import { useNavigate } from "react-router-dom";
 
-const HNavbar = ({ open, handleDrawerOpen, appBarStyles, toolBarStyles ,children}) => {
+const HNavbar = ({
+  open,
+  handleDrawerOpen,
+  appBarStyles,
+  toolBarStyles,
+  children,
+}) => {
   const theme = useTheme();
   const [anchorEl, setAnchorEl] = useState(null);
   const [themeAnchorEl, setThemeAnchorEl] = useState(null);
 
-  const user = useStore((state)=>state.user)
-  const setTheme = useStore((state)=>state.setTheme)
+  const user = useStore((state) => state.user);
+  const setTheme = useStore((state) => state.setTheme);
 
-  const logoutClient = useStore((state)=>state.logoutClient)
-  const navigate = useNavigate()
+  const logoutClient = useStore((state) => state.logoutClient);
+  const navigate = useNavigate();
 
   const openAvatar = Boolean(anchorEl);
 
@@ -43,15 +49,15 @@ const HNavbar = ({ open, handleDrawerOpen, appBarStyles, toolBarStyles ,children
     setThemeAnchorEl(event.currentTarget);
   };
 
-  const handleThemeClose = (theme) => ()=>{
-    setTheme(theme)
+  const handleThemeClose = (theme) => () => {
+    setTheme(theme);
     setThemeAnchorEl(null);
   };
 
-  const handleLogout = ()=>{
-    logoutClient()
-    navigate("/")
-  }
+  const handleLogout = () => {
+    logoutClient();
+    navigate("/");
+  };
 
   return (
     <AppBar
@@ -71,7 +77,12 @@ const HNavbar = ({ open, handleDrawerOpen, appBarStyles, toolBarStyles ,children
             >
               <MenuIcon />
             </IconButton>
-            <Typography variant="h6" noWrap component="div" sx={{fontWeight:"bold"}}>
+            <Typography
+              variant="h6"
+              noWrap
+              component="div"
+              sx={{ fontWeight: "bold" }}
+            >
               EasyHotel
             </Typography>
           </Box>
@@ -98,11 +109,17 @@ const HNavbar = ({ open, handleDrawerOpen, appBarStyles, toolBarStyles ,children
                   "aria-labelledby": "theme",
                 }}
               >
-                <MenuItem onClick={handleThemeClose("default")}>Teal - Default</MenuItem>
+                <MenuItem onClick={handleThemeClose("default")}>
+                  Teal - Default
+                </MenuItem>
                 <MenuItem onClick={handleThemeClose("holy")}>Holy</MenuItem>
-                <MenuItem onClick={handleThemeClose("fancyBlue")}>Fancy Blue</MenuItem>
+                <MenuItem onClick={handleThemeClose("fancyBlue")}>
+                  Fancy Blue
+                </MenuItem>
                 <MenuItem onClick={handleThemeClose("earth")}>Earth</MenuItem>
-                <MenuItem onClick={handleThemeClose("elegant")}>Elegant</MenuItem>
+                <MenuItem onClick={handleThemeClose("elegant")}>
+                  Elegant
+                </MenuItem>
                 <MenuItem onClick={handleThemeClose("garnet")}>Garnet</MenuItem>
               </Menu>
             </Box>
@@ -137,9 +154,11 @@ const HNavbar = ({ open, handleDrawerOpen, appBarStyles, toolBarStyles ,children
                 MenuListProps={{
                   "aria-labelledby": "avatar",
                 }}
-                sx={{"& MuiPaper-root":{
-                  boxShadow:"none"
-                }}}
+                sx={{
+                  "& MuiPaper-root": {
+                    boxShadow: "none",
+                  },
+                }}
               >
                 <MenuItem onClick={handleClose}>Profile</MenuItem>
                 <MenuItem onClick={handleClose}>My account</MenuItem>
@@ -149,9 +168,7 @@ const HNavbar = ({ open, handleDrawerOpen, appBarStyles, toolBarStyles ,children
           </Box>
         </Box>
       </Toolbar>
-      <Box sx={{flexGrow:1}}>
-        {children}
-      </Box>
+      <Box sx={{ flexGrow: 1 }}>{children}</Box>
     </AppBar>
   );
 };
@@ -161,6 +178,6 @@ HNavbar.propTypes = {
   handleDrawerOpen: PropTypes.func,
   appBarStyles: PropTypes.object,
   toolBarStyles: PropTypes.object,
-  children:PropTypes.node
+  children: PropTypes.node,
 };
 export default HNavbar;

@@ -12,6 +12,6 @@ export const publicRoutes = [
   {
     path: "*",
     key: "route_" + "other",
-    element: <Navigate to={"/login"}  replace = {true}/>,
+    element: <Navigate to={"/login"} replace={true} />,
   },
 ];

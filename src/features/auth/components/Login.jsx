@@ -16,7 +16,7 @@ const Login = ({ setShowRegister }) => {
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const loginClient = useStore((state)=>state.loginClient)
+  const loginClient = useStore((state) => state.loginClient);
 
   const onLogin = async () => {
     if (!email || !password) {
@@ -25,7 +25,7 @@ const Login = ({ setShowRegister }) => {
     try {
       setLoading(true);
       const res = await login({ email: email, password: password });
-      loginClient(res.data)
+      loginClient(res.data);
     } catch (error) {
       toast.error(error.response ? error.response.data : error);
     } finally {
@@ -39,7 +39,14 @@ const Login = ({ setShowRegister }) => {
 
   return (
     <FormGroup sx={auth.authForm}>
-      <Typography variant="h5" fontWeight={"bold"} boxShadow={"none"} marginBottom={2}>Please Login</Typography>
+      <Typography
+        variant="h5"
+        fontWeight={"bold"}
+        boxShadow={"none"}
+        marginBottom={2}
+      >
+        Please Login
+      </Typography>
       <HInput
         required={true}
         label="Email"
@@ -55,19 +62,19 @@ const Login = ({ setShowRegister }) => {
         onChange={(e) => setPassword(e.target.value)}
       />
       <HCheckBox label="Show Password" onChange={checkShowPassword} />
-      <HButton 
-        disabled={loading} 
-        variant="contained" 
+      <HButton
+        disabled={loading}
+        variant="contained"
         onClick={onLogin}
         loading={loading}
-        sx={{boxShadow:"none"}}
+        sx={{ boxShadow: "none" }}
       >
         Login
       </HButton>
       <HButton
         color="contrastText"
         variant="contained"
-        sx={{boxShadow:"none"}}
+        sx={{ boxShadow: "none" }}
         onClick={() => setShowRegister(true)}
       >
         SignUp

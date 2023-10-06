@@ -74,10 +74,8 @@ const HSidebar = ({ open, handleDrawerClose }) => {
                       <List>
                         {sidebarItem.subItems.map((subItem) => {
                           return (
-                            <Link key={subItem.key} to={subItem.route}>                           
-                              <ListItem
-                                sx={styles.listItem(theme)}
-                              >
+                            <Link key={subItem.key} to={subItem.route}>
+                              <ListItem sx={styles.listItem(theme)}>
                                 <ListItemButton sx={styles.listItemButton()}>
                                   <ListItemIcon>{subItem.icon}</ListItemIcon>
                                   <ListItemText>{subItem.label}</ListItemText>
@@ -94,7 +92,7 @@ const HSidebar = ({ open, handleDrawerClose }) => {
             );
           } else {
             return (
-              <Link key={sidebarItem.key} to={sidebarItem.route}>              
+              <Link key={sidebarItem.key} to={sidebarItem.route}>
                 <ListItem sx={styles.listItem(theme)}>
                   <ListItemButton sx={styles.listItemButton()}>
                     <ListItemIcon>{sidebarItem.icon}</ListItemIcon>
@@ -106,10 +104,18 @@ const HSidebar = ({ open, handleDrawerClose }) => {
           }
         })}
       </List>
-      <Box sx={{marginTop:"auto", mb:1, textAlign:"center",display:"flex",flexDirection:"column",gap:1,p:2}}>
-        <Typography variant="caption">
-          Version: 0.0.1
-        </Typography>
+      <Box
+        sx={{
+          marginTop: "auto",
+          mb: 1,
+          textAlign: "center",
+          display: "flex",
+          flexDirection: "column",
+          gap: 1,
+          p: 2,
+        }}
+      >
+        <Typography variant="caption">Version: 0.0.1</Typography>
         <Typography variant="caption">
           2023 Deltasoft Inc. All Rights Reserved
         </Typography>

@@ -4,16 +4,15 @@ import { privateRoutes } from "./PrivateRoutes";
 import { publicRoutes } from "./PublicRoutes";
 import Loading from "./components/Loading";
 import HLayout from "@/components/HLayout/HLayout";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
-const AppRouter = ({isAuthorized,user}) => {
-  
+const AppRouter = ({ isAuthorized, user }) => {
   const routes = useMemo(() => {
     if ((user && isAuthorized) || (user && !isAuthorized)) {
       return privateRoutes;
     }
     return publicRoutes;
-  }, [isAuthorized,user]);
+  }, [isAuthorized, user]);
 
   if (isAuthorized) {
     return (
@@ -22,7 +21,11 @@ const AppRouter = ({isAuthorized,user}) => {
           <Routes>
             {routes.map((route) => {
               return (
-                <Route key={route.key} path={route.path} element={route.element} />
+                <Route
+                  key={route.key}
+                  path={route.path}
+                  element={route.element}
+                />
               );
             })}
           </Routes>
@@ -47,8 +50,8 @@ const AppRouter = ({isAuthorized,user}) => {
     );
   }
 };
-AppRouter.propTypes={
-  isAuthorized:PropTypes.bool.isRequired,
-  user:PropTypes.object
-}
+AppRouter.propTypes = {
+  isAuthorized: PropTypes.bool.isRequired,
+  user: PropTypes.object,
+};
 export default AppRouter;

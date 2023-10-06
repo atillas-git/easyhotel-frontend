@@ -12,11 +12,11 @@ const styles = {
   container: (theme) => ({
     flexGrow: 1,
     width: "100vw",
-    display:"flex",
-    alignItems:"center",
-    justifyContent:"center",
-    flexDirection:"column",
-    backgroundColor:theme.palette.primary.light,
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    flexDirection: "column",
+    backgroundColor: theme.palette.primary.light,
     height: "100vh",
   }),
 };

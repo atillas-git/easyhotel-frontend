@@ -2,7 +2,7 @@ import React from "react";
 import { Navigate } from "react-router-dom";
 
 const Dashboard = React.lazy(() => import("@/features/dashboard/Dashboard"));
-const Hr = React.lazy(()=>import("@/features/employeeManagement/Hr"));
+const Hr = React.lazy(() => import("@/features/employeeManagement/Hr"));
 
 export const privateRoutes = [
   {
@@ -18,6 +18,6 @@ export const privateRoutes = [
   {
     path: "*",
     key: "route_" + "other",
-    element: <Navigate to={"/"}  replace = {true}/>,
+    element: <Navigate to={"/"} replace={true} />,
   },
 ];
