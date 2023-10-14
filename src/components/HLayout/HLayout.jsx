@@ -41,6 +41,7 @@ const style = {
     marginTop: "65px",
     overflowY: "auto",
     flexGrow: 1,
+    overflowX:"hidden",
     minHeight: `calc(100vh - ${65}px)`,
     backgroundColor: theme.palette.primary.light,
     ...(open && {

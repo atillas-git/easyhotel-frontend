@@ -5,7 +5,15 @@ import { toast } from "react-toastify";
 const RestUtils = {
   post: async (url, payload) => {
     try {
-      const res = await axios.post(url, payload);
+      const user = JSON.parse(localStorage.getItem("easyhotel_user"))
+      if(!user){
+        throw new Error("User not found in storage!")
+      }
+      const res = await axios.post(url, payload,{
+        headers: {
+          "x-access-token": user.access_token,
+        },
+      });
       return res.data;
     } catch (error) {
       return RestUtils.handleError(error);
@@ -36,7 +44,7 @@ const RestUtils = {
     }
   },
   handleError: (err) => {
-    if (err && err.response.status === 403) {
+    if (err && err.response && err.response.status === 403) {
       unstable_batchedUpdates(() => {
         useStore.getState().logoutClient();
         useStore.getState().unAuthorize();

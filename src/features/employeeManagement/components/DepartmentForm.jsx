@@ -61,7 +61,7 @@ const DepartmentForm = ({ reason, setDrawerOpen }) => {
 };
 
 DepartmentForm.propTypes = {
-  reason: PropTypes.oneOf(["add", "update"]),
+  reason: PropTypes.oneOf(["addDepartment", "updateDepartment"]),
   setDrawerOpen: PropTypes.func,
 };
 

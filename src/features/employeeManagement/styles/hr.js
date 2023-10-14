@@ -4,7 +4,7 @@ const styles = {
     display: "flex",
     flexDirection: "column",
     gap: 2,
-    p: 2,
+    p: 4,  
   }),
   heading: () => ({
     display: "flex",
@@ -24,6 +24,7 @@ const styles = {
     display: "flex",
     flexDirection: "column",
     height: "100%",
+    color:"primary.dark"
   }),
   drawerHeader: () => ({
     p: 2,
@@ -31,5 +32,20 @@ const styles = {
     alignItems: "center",
     justifyContent: "space-between",
   }),
+  drawerListItem:()=>({
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
+    gap:2,
+  }),
+  listItemInput:()=>({
+    width:"100%",
+  }),
+  table:()=>({
+    width:{
+      sm:700,
+      md:1555
+    }
+  })
 };
 export default styles;
